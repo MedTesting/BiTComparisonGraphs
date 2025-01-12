@@ -233,7 +233,9 @@ graph = html.Div([cyto.Cytoscape(
         layout={'name': 'grid', 'columns': 1},
         elements = legend_nodes,
         stylesheet = selector_node_classes + legend_stylesheet,
-        style={'width': '20%', 'height': '780px', 'display': 'inline-block'},)
+        style={'width': '20%', 'height': '780px', 'display': 'inline-block'},
+                     userPanningEnabled=False,
+                     userZoomingEnabled=False,)
 ])
 
 weight_slider = html.Div([

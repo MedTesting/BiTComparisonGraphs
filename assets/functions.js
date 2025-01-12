@@ -308,8 +308,8 @@ function get_original_edges(edge_data, node_type, colour_type, colour_source, ed
 }
 
 async function read_files(database) {
-    const events_file = "https://raw.githubusercontent.com/LuisMontanaG/BiTComparisonGraphs/refs/heads/main/" + database + "/Events.csv"
-    const entities_file = "https://raw.githubusercontent.com/LuisMontanaG/BiTComparisonGraphs/refs/heads/main/" + database + "/EntityAttributes.csv"
+    const events_file = "https://raw.githubusercontent.com/MedTesting/BiTComparisonGraphs/refs/heads/main/" + database + "/Events.csv"
+    const entities_file = "https://raw.githubusercontent.com/MedTesting/BiTComparisonGraphs/refs/heads/main/" + database + "/EntityAttributes.csv"
 
     const event_data = await fetch(events_file)
     const entity_data = await fetch(entities_file)
@@ -356,10 +356,10 @@ async function read_files(database) {
 }
 
 async function read_team_groups_from_file(database, variable) {
-    const file = "https://raw.githubusercontent.com/LuisMontanaG/BiTComparisonGraphs/refs/heads/main/" + database + "/Variables.csv"
+    const file = "https://raw.githubusercontent.com/MedTesting/BiTComparisonGraphs/refs/heads/main/" + database + "/Variables.csv"
     const data = await fetch(file)
     const variables_data = await data.text()
-
+    console.log(variables_data)
     const lines = variables_data.split('\n')
     lines.pop();
     var is_variable = false;
@@ -379,7 +379,7 @@ async function read_team_groups_from_file(database, variable) {
 }
 
 async function read_teams_from_file(database, variable, group_name) {
-    const file = "https://raw.githubusercontent.com/LuisMontanaG/BiTComparisonGraphs/refs/heads/main/" + database + "/Variables.csv"
+    const file = "https://raw.githubusercontent.com/MedTesting/BiTComparisonGraphs/refs/heads/main/" + database + "/Variables.csv"
     const data = await fetch(file)
     const variables_data = await data.text()
 
@@ -540,8 +540,6 @@ function get_behaviour_node_data(events, team_list, team, meeting, normalise) {
         }
     }
     else {
-        // Convert the following python code to javascript
-        // events = events[events['sequenceId'].str.split('_').str[1].isin(team_list)]
         events.data = events.data.filter(event => team_list.includes(event.sequenceId.split('_')[1]));
     }
 
